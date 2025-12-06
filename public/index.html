@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QR Manager</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <h1>QR Code Manager</h1>
+        <p>Create, manage, and download QR codes without any external APIs.</p>
+      </div>
+      <button id="newQrBtn" class="primary">+ New QR</button>
+    </header>
+
+    <main class="layout">
+      <section class="panel">
+        <div class="stats" id="stats"></div>
+
+        <div class="toolbar">
+          <div class="filters">
+            <button class="chip active" data-filter="all">All</button>
+            <button class="chip" data-filter="active">Active</button>
+            <button class="chip" data-filter="inactive">Inactive</button>
+          </div>
+          <input type="search" id="search" placeholder="Search by name or data" />
+        </div>
+
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Data</th>
+                <th>Status</th>
+                <th>Created</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="qrTable"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <aside class="detail" id="detail"></aside>
+    </main>
+
+    <div class="drawer" id="drawer">
+      <div class="drawer-header">
+        <h2>Create QR</h2>
+        <button id="closeDrawer">✕</button>
+      </div>
+      <form id="createForm" class="form">
+        <label>
+          Name / Label
+          <input name="name" required />
+        </label>
+        <label>
+          Data / URL
+          <input name="data" required />
+        </label>
+        <div class="preview">
+          <div class="preview-canvas" id="previewCanvas"></div>
+          <p class="muted">Preview updates automatically as you type.</p>
+        </div>
+        <div class="actions">
+          <button type="submit" class="primary">Save QR</button>
+          <button type="button" id="clearForm" class="ghost">Clear</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="backdrop" id="backdrop"></div>
+
+    <script src="/lib/qrcode.min.js"></script>
+    <script src="/app.js"></script>
+  </body>
+</html>
